@@ -30,12 +30,19 @@ int main(){
                     while(correct_option = 'No'){
                         printf("\nYou have arrived to your destination, \n Press X to exit. \n Press E to re-use\n ");
                         scanf("%s", &option);
+                        if(option==re_use){
+                            //The main function to re-start the process
+                            main();
+                            break;
+                        }
+                        else if(option==exiting){
+                            //Exiting the elevator
+                            printf("\nChao!\n");return 0;
+                        }
                     }
                 }
             }
         }
-        if(option==re_use){break;}
-        else if(option==exiting){printf("\nChao!\n");return 0;}
     }
 }
 void check_route(){
