@@ -45,12 +45,21 @@ int main(){
         }
     }
 }
+int int_read;
 void check_route(){
     char correct_route = 'No';
+    int_read = 0;
     while (correct_route='No'){
         printf("\nCurrent floor: %d", current_floor);
-        printf("\nEnter value for destination \n1. Up 2.Down\n");
-        scanf("%d", &route);
+        printf("\nEnter value for destination \n1. Up 2. Down\n");
+        int_read = scanf("%d", &route);
+        //Handling string inputs instead of integers
+        while(int_read!=1){
+            printf("\nEnter a right value.");
+            scanf("%*[^\n]");
+            printf("\nEnter value for destination \n1. Up 2. Down\n");
+            int_read = scanf("%d", &route);
+        }
         if (route == 1 || route==2){ break;}
         else{printf("\nChoose a correct destination\n");}
     }
@@ -58,8 +67,15 @@ void check_route(){
 }
 
 void check_destination(){
+    int_read=0;
     printf("\nChoose your destination Floor; \n 0, 1, 2, 3, 4, 5: \nPress 9 to exit\nDestination: ");
-    scanf("%d", &destination);
+    int_read=scanf("%d", &destination);
+    while(int_read!=1){
+        printf("\nEnter a right floor.");
+        scanf("%*[^\n]");
+        printf("\nChoose your destination Floor; \n 0, 1, 2, 3, 4, 5: \nPress 9 to exit\nDestination: ");
+        int_read = scanf("%d", &destination);
+    }
 }
 void run_elevator(){
     if(route==1){
