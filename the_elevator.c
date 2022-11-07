@@ -20,6 +20,7 @@ int pass_dest;
 int elev_choice;
 int passfloors[];
 int passdests[];
+int close_elev;
 //The main function
 int main(){
     //checking the route and passenger choice for elevator
@@ -74,13 +75,15 @@ void elev_call(){
     int dis_elv2 = elev2_pos - pass_pos;
     if(dis_elv1<0){dis_elv1=dis_elv1/(-1);}
     if(dis_elv2<0){dis_elv2=dis_elv2/(-1);}
-    printf("\n ELEV 1: %d - %d = ", elev1_pos,pass_pos);
     printf("\nDistance from elevator 1: %d", dis_elv1);
     printf("\nDistance from elevator 2: %d", dis_elv2);
-    if(dis_elv1<dis_elv2){printf("\nElevator 1 is closer");}
-    else if(dis_elv2<dis_elv1){printf("\nElevator 2 is closer");}
-    else{printf("\nAll elevators are similar distance from you");}
-
+    if(dis_elv1<dis_elv2){close_elev=1;}
+    else if(dis_elv2<dis_elv1){close_elev=2;}
+    else{
+        if(elev1_weight<elev2_weight){close_elev=1;}
+        else{close_elev=2;}
+    }
+    printf("\nElevator %d is closer", close_elev);
 }
 
 void elev1_dest(){
