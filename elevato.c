@@ -1,4 +1,6 @@
 #include <stdio.h>
+//Declaring variables
+
 int route;
 int floors=5;
 int destination;
